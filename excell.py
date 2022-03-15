@@ -33,7 +33,8 @@ print(qtdProdVendido)
 
 print (' - ' * 50)
 # Ticket medio por produto em cada loja media (faturamento/qtdProduto)
-ticketMedio = (faturamento['Valor Final'] / qtdProdVendido['Quantidade']).to_frame()
+ticketMedio = (faturamento['Valor Final'] / qtdProdVendido['Quantidade']).to_frame() # "transforma" em tabela
+ticketMedio = ticketMedio.rename(columns = {0 : 'Ticket Médio'})# muda nome da coluna 0
 print(ticketMedio)
 
 # Enviar um email com o relatorio
@@ -45,13 +46,13 @@ corpo_email = f"""
 <p>Prezado,</p>
 <p>Segue o Relatório de Vendas por cada Loja.</p>
 <p>Faturamento:</p>
-{faturamento.to_html(formatters={'Valor Final': 'R${:,.2f}'.format})}
+{faturamento.to_html(formatters = {'Valor Final': 'R${:,.2f}'.format})} #formatar nº no email
 <p>Quantidade Vendida:</p>  
 {qtdProdVendido.to_html()}
 <p>Ticket Médio dos Produtos em cada Loja:</p>
-{ticketMedio.to_html(formatters={'Ticket Médio': 'R${:,.2f}'.format})}
+{ticketMedio.to_html(formatters = {'Ticket Médio': 'R${:,.2f}'.format})}
 <p>Qualquer dúvida estou à disposição.</p>
-<p>Att.,</p>
+<p>Att.</p>
 <p>Ivan</p>
 """
 
@@ -59,7 +60,7 @@ msg = email.message.Message()
 msg['Subject'] = 'Relatório de Vendas por Loja'
 msg['From'] = 'largato18@gmail.com'
 msg['To'] = 'ivanleoni18@hotmail.com'
-password = 'XXXXXXX'
+password = 'xxxxxx'
 msg.add_header('Content-Type','text/html')
 msg.set_payload(corpo_email )
 
