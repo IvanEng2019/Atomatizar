@@ -1,0 +1,11 @@
+
+Dado um banco em xlsx Automatizar para fazer mensalmente:
+- O Faturamento por loja
+- A Quantidade de produto vendidos por loja
+- O Ticket médio por produto em cada loja media (faturamento/qtd_produto)
+- Enviar um email (gmail) com o relatorio automaticamente
+
+
+Se nao funcionar o envio do gmail deve seguir os seguintes passos:
+Você vai entrar na sua conta, vai clicar no símbolo onde tem sua foto ou suas iniciais no canto superior direito e vai até a opção Gerenciar sua Conta do Google.
+Feito isso no canto esquerdo agora, você vai clicar em Segurança, agora vamos descer e ir até a parte de Acesso a app menos seguro.
